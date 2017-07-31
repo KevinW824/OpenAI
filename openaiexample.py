@@ -19,7 +19,7 @@ def some_random_game_first():
     for episode in range(10):
         env.reset()
         for t in range(goal_step):
-            env.render()
+            #env.render()
             action = env.action_space.sample()
             observation, reward, done, info = env.step(action)
             if done:
@@ -105,7 +105,7 @@ def train_model(training_data, model=False):
     if not model:
         model = neural_network_model(input_size=len(x[0]))
 
-    model.fit({'input': x}, {'targets': y}, n_epoch=5, snapshot_step=500, show_metric=True, run_id='openaistuff')
+    model.fit({'input': x}, {'targets': y}, n_epoch=3, snapshot_step=500, show_metric=True, run_id='openaistuff')
 
     return model
 
@@ -116,7 +116,7 @@ model = train_model(training_data)
 scores = []
 choices = []
 
-for each_game in range(10):
+for each_game in range(100):
     score = 0
     game_memory = []
     prev_obs = []
